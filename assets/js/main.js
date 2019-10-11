@@ -13,7 +13,7 @@ window.onload = function (){
 
         celdaAccidente.innerHTML = ( document.getElementById("accident_switch").checked ) ? "Si" : "No"
         celdaEvento.innerHTML = document.getElementById("event_field").value
-        celdaFecha.innerHTML = [d.getMonth()+1, d.getDate(), d.getFullYear()].join('/')+' '+[d.getHours(), d.getMinutes(), d.getSeconds()].join(':');
+        celdaFecha.innerHTML = d.toLocaleString()
 
         fila.appendChild(celdaEvento);
         fila.appendChild(celdaAccidente);
@@ -24,7 +24,8 @@ window.onload = function (){
 
 function verificarLongitud(boton){
     var cajaTexto =document.getElementById("event_field")
-    var validarLetras = /^[A-Z]+$/i
+    var validarLetras = /^[a-z0-9_.-]+$/i
+    
     cajaTexto.addEventListener("keyup", ()=>{
         if(validarLetras.test(cajaTexto.value))
             boton.disabled = false
